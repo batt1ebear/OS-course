@@ -4,7 +4,6 @@ pid_map={'free':0}#pid与uid映射
 id_con=1#分配空间id计数器
 
 def show():
-    print(statue)
     bar='*'*50
     for i in range(len(statue)):
         print(bar+str(statue[i][1]))
@@ -38,9 +37,11 @@ def load(uid):
         else:
             flag=2
     if(flag==1):
-        print("分配失败-空间不足")
+        #print("分配失败-空间不足")
+        pass
     else:
-        print("分配失败-空闲区不足")
+        #print("分配失败-空闲区不足")
+        pass
 
 
 def release(pro_id):
@@ -86,8 +87,8 @@ def release(pro_id):
 
 
 
-def main():
-    list = [int(n) for n in input("输入待分配进程空间大小").split()]
+def play():
+    list = [int(n) for n in input("输入待分配进程空间大小\n").split()]
     for i in range(len(list)):
         dkey=chr(ord('a')+i)
         uid_map[(dkey)]=list[i]
@@ -110,4 +111,5 @@ def main():
 
 
 
-main()
+if __name__=="__main__":
+    play()
