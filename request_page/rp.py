@@ -35,7 +35,7 @@ for i in range(len(form)):
         dkey=chr(ord('a')+i)
         uid_map[(dkey)]=form[i]
 
-def show():
+def show(memoIn=-1,memoOut=-1):
     #TODO:传入调度方向 外存与内存状态图d
     bar='*'*50
     print(bar)
@@ -49,10 +49,26 @@ def show():
             print("          空")
             print('*'+' '*48+'*')
         except TypeError:
-            #print("fuck")
             pass
-        for line in range(5):
+        if(i==1):
+            for line in range(1):
+                print('*'+' '*48+'*')
+            if(memoIn!=-1):
+                print('*'+' '*48+'*'+"        <-------")
+                print('*'+' '*48+'*'+"        调入%d"%memoIn)
+            else:
+                print('*'+' '*48+'*')
+                print('*'+' '*48+'*')
+            if(memoOut!=-1):
+               print('*'+' '*48+'*'+"        ------->")
+               print('*'+' '*48+'*'+"        调入%d"%memoOut)
+            else:
+                print('*'+' '*48+'*')
+                print('*'+' '*48+'*')
             print('*'+' '*48+'*')
+        else:
+            for line in range(5):
+                print('*'+' '*48+'*')
         print(bar)
     t.sleep(1)
 
@@ -85,7 +101,7 @@ def run(order):
                 PageID+=1
                 form[order[i]][2]=1
                 print("%d缺页-直接调入"%order[i])
-                show()
+                show(order[i])
             else:#没空间 调出算法写一个FIFO
                 inde=stack.out()
                 form[inde][0]=-1
@@ -99,7 +115,7 @@ def run(order):
                 PageID+=1
                 form[order[i]][2]=1 
                 print("%d缺页-调出%d后调入"%(order[i],form[inde][1]))
-                show()
+                show(order[i],form[inde][1])
             missCount+=1
 
 
