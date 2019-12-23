@@ -61,7 +61,7 @@ def show(memoIn=-1,memoOut=-1):
                 print('*'+' '*48+'*')
             if(memoOut!=-1):
                print('*'+' '*48+'*'+"        ------->")
-               print('*'+' '*48+'*'+"        调入%d"%memoOut)
+               print('*'+' '*48+'*'+"        调出%d"%memoOut)
             else:
                 print('*'+' '*48+'*')
                 print('*'+' '*48+'*')
@@ -90,8 +90,9 @@ def run(order):
             form[order[i]][3]+=1
             form[order[i]][4]=1
             print("%d未缺页"%order[i])
+            stack.refresh(_?)
             #实际这里应该检查一下修改位 看看是否要复制回去
-            show()
+            show(order[i])
 
         else:#不在页内
             if(len(temPageId)<3):#有空间

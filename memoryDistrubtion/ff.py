@@ -33,7 +33,7 @@ def load(uid):
                 print("分配成功")
                 break
             else:
-                flag=1         
+                flag=1
         else:
             flag=2
     if(flag==1):
